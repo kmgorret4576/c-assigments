@@ -1,0 +1,69 @@
+
+README
+C++ Credit Card Validation Program
+A C++ program that validates credit card numbers using the Luhn algorithm.
+1. Project Overview
+This project is a C++ console application that checks whether a credit card number is valid. The program validates the number based on its length, checks whether it has an accepted prefix, and then applies the Luhn checksum algorithm.
+2. Objectives
+•	Read a credit card number from the user.
+•	Determine the number of digits in the card number.
+•	Check whether the card number contains between 13 and 16 digits.
+•	Check whether the card begins with an accepted prefix: 4, 5, 37, or 6.
+•	Apply the Luhn algorithm to calculate the checksum.
+•	Display whether the credit card number is valid or invalid.
+3. Technologies Used
+•	Programming language: C++
+•	Input/output: <iostream>
+•	Mathematical functions: <cmath>
+•	String library included in the source code: <string>
+•	Compiler: Any standard C++ compiler such as g++, MinGW, or Visual Studio C++ compiler
+•	Execution environment: Console/terminal
+4. Program Structure
+The program is divided into the following functions:
+•	main(): Controls the program, receives input, calls the validation function, and displays the result.
+•	isValid(): Performs the overall validation process.
+•	sumOfDoubleEvenPlace(): Doubles the required digits and calculates their contribution to the checksum.
+•	getDigit(): Adds the digits of a doubled value when the result is greater than 9.
+•	sumOfOddPlace(): Adds the remaining digits without doubling them.
+•	prefixMatched(): Checks whether the card number begins with a specified prefix.
+•	getSize(): Counts the number of digits in a number.
+•	getPrefix(): Extracts the first k digits of a number.
+5. How the Program Works
+1. The user enters a credit card number.
+2. The program calls isValid() to begin validation.
+3. getSize() determines how many digits the number contains.
+4. The program rejects numbers with fewer than 13 or more than 16 digits.
+5. prefixMatched() checks whether the number begins with 4, 5, 37, or 6.
+6. sumOfDoubleEvenPlace() processes the required alternating digits by doubling them.
+7. getDigit() reduces two-digit doubled values by adding their individual digits.
+8. sumOfOddPlace() adds the other digits directly.
+9. The two sums are added to produce totalSum.
+10. If totalSum is divisible by 10, the program reports that the card is valid; otherwise, it reports that it is invalid.
+6. Luhn Algorithm
+The program uses the Luhn algorithm, a checksum method commonly used to detect mistyped identification numbers such as payment-card numbers. The algorithm does not prove that a card exists or that it can be used for a transaction; it only checks whether the number satisfies the checksum and the additional rules implemented by this program.
+7. How to Compile and Run
+Using g++ from a terminal:
+g++ credit_card.cpp -o credit_card
+.\credit_card.exe
+On Linux/macOS, the executable can be run with:
+g++ credit_card.cpp -o credit_card
+./credit_card
+8. Testing
+The program should be tested with numbers that have different lengths, prefixes, and checksum results. The following examples illustrate the expected behavior.
+Test	Input	Expected Result
+Valid-format example	4532015112830366	Valid if it passes the implemented Luhn check
+Invalid checksum	4532015112830367	Invalid
+Invalid length	123456789012	Invalid
+Invalid prefix	1234567890123456	Invalid
+9. Sample Program Interaction
+Example:
+Enter your credit card number: 4532015112830366
+The Credit Card,4532015112830366 is valid
+10. Important Notes
+•	The program validates the number mathematically; it does not contact a bank or payment network.
+•	The accepted prefixes are determined by the conditions written in the program.
+•	The current implementation stores the card number in a long long variable.
+•	For production software, a card number is generally better treated as text so that leading zeros can be preserved.
+•	The <string> header is included in the source code but is not currently required by the implementation.
+11. Conclusion
+This project demonstrates the use of C++ functions, conditional statements, loops, arithmetic operators, modulus, integer division, and function decomposition. It also demonstrates how the Luhn algorithm can be implemented to perform a basic credit card number validation.
